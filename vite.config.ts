@@ -13,8 +13,12 @@ if (
   (!process.env.SHOPIFY_APP_URL ||
     process.env.SHOPIFY_APP_URL === process.env.HOST)
 ) {
-  process.env.SHOPIFY_APP_URL = process.env.HOST;
-  delete process.env.HOST;
+  // Only use HOST if it includes a protocol (e.g. http://)
+  // This prevents crashing when HOST is 0.0.0.0 (used for binding)
+  if (process.env.HOST.startsWith("http")) {
+    process.env.SHOPIFY_APP_URL = process.env.HOST;
+    delete process.env.HOST;
+  }
 }
 
 const host = new URL(process.env.SHOPIFY_APP_URL || "http://localhost")
