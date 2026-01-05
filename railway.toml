@@ -1,6 +1,7 @@
 [build]
-builder = "nixpacks"
+
 
 [deploy]
-healthcheckPath = "/"
+healthcheckPath = "/healthz"
+healthcheckTimeout = 100
 restartPolicyType = "ON_FAILURE"
