@@ -10,7 +10,7 @@
     "config:use": "shopify app config use",
     "env": "shopify app env",
     "start": "echo \"Starting server on HOST=${HOST:-0.0.0.0} PORT=${PORT}\" && HOST=0.0.0.0 remix-serve ./build/server/index.js",
-    "docker-start": "npx prisma db push --accept-data-loss & npm run start",
+    "docker-start": "npm run start",
     "db:fix": "npx prisma migrate resolve --applied 20251223053205_add_shop_field_with_default || true",
     "setup": "prisma generate && prisma migrate deploy",
     "lint": "eslint --cache --cache-location ./node_modules/.cache/eslint .",
