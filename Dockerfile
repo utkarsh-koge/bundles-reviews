@@ -1,7 +1,7 @@
 FROM node:18-alpine
 RUN apk add --no-cache openssl
 
-EXPOSE 8080
+EXPOSE 3000
 
 WORKDIR /app
 
@@ -16,7 +16,7 @@ RUN npm remove @shopify/cli
 
 COPY . .
 
-RUN npm run build
+RUN npm run build && npx prisma generate
 
 ENV HOST=0.0.0.0
 
